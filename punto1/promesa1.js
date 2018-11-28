@@ -10,8 +10,8 @@ promesaUno.then(function(res){
     console.log(`Inicia ejecución`)
     res.end(
     function multiplicaPorSiMismo(valor, ejecuta) {
-        console.log(`Inicia ejecución: el Valor es = ${valor}`)
-        setTimeout(function() {
+        console.log(`El Valor es = ${valor}`)
+        setTimeout(() => {
             ejecuta(valor, valor * valor);
             //ejecuta(2,2*2)
         }, 1000)
