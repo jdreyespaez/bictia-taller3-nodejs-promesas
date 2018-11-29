@@ -1,27 +1,65 @@
-var http = require('http');
-var promesa = new Promise((resolve, reject) => {
-    console.log('Iniciando las promesas de Pepe');
-    http.createServer((req, res) => {
-        return(!req) ? reject(new Error('Conexión fallida al servidor')) : resolve(res)
-    }).listen(8080)
-})
+var despertarTemprano = function() {
+    return new Promise(function(resolve, reject) {
+        resolve('Pepe se despertó a las 6:00am \n');
+    });
+};
+  
+var tomarTransmilenio = function(mensaje) {
+    return new Promise(function(resolve, reject) {
+      resolve(mensaje + 'Se alistó y tomó Transmilenio a las 7:00am \n');
+    });
+};
+  
+var estudiarBictia = function(mensaje) {
+    return new Promise(function(resolve, reject) {
+        resolve(mensaje + 'Entró a estudiar a las 8:15am \n');
+    });
+};
 
+var salirAlmuerzo = function(mensaje) {
+    return new Promise(function(resolve, reject) {
+        resolve(mensaje + 'Salió del estudio y almorzó a las 12:00 \n');
+    });
+};
 
-promesa.then(function(res){
-    console.log(`Inicia el día de Pepe`);
-    
-        res.end(function despierto(accion, ejecucion) {
-                setTimeout(function() {
-                    console.log(`Inicia ejecución: Pepe se despiera a las 6:00am`)
-                }, 2000)
+var trabajarBellatrix = function(mensaje) {
+    return new Promise(function(resolve, reject) {
+        resolve(mensaje + 'Fue a trabajar a Bellatrix a la 1:00pm \n');
+    });
+};
 
-                setTimeout(function() {
-                    console.log(`Inicia ejecución: se alista y sale a coger Transmilenio a las 6:00am`)
-                }, 2000)
+var relaxCompas = function(mensaje) {
+    return new Promise(function(resolve, reject) {
+        resolve(mensaje + 'Salió del trabajo a relajarse con sus compañeros de trabajo a las 8:00pm \n');
+    });
+};
 
-        })
-    
-}).catch(function(err){
-    console.log(err.message)
-    console.log('No suena el despertador')
-})
+var vuelveCasa = function(mensaje) {
+    return new Promise(function(resolve, reject) {
+        resolve(mensaje + 'Volvió a casa a las 11:00pm \n');
+    });
+};
+
+var verNetflix = function(mensaje) {
+    return new Promise(function(resolve, reject) {
+        resolve(mensaje + 'Se acuesta para ver Netflix a la 1:00am \n');
+    });
+};
+  
+despertarTemprano().then(function(result){
+    return tomarTransmilenio(result);
+}).then(function(result){
+    return estudiarBictia(result);
+}).then(function(result){
+    return salirAlmuerzo(result);
+}).then(function(result){
+    return trabajarBellatrix(result);
+}).then(function(result){
+    return relaxCompas(result);
+}).then(function(result){
+    return vuelveCasa(result);
+}).then(function(result){
+    return verNetflix(result);
+}).then(function(result){
+    console.log('Así fue el día de Pepe:\n \n' + result);
+});
