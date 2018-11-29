@@ -89,6 +89,19 @@ function volverCasar(hora){
     })
 }
 
+// ACTIVIDAD 8:
+function verNetflix(hora) {
+    console.log("[11:00PM]\nVuelve a casa\n\n")
+    return promesa = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            return (!(hora == "01:00AM")) ?
+                reject(new Error('Pepe, olvidó pagar la mensualidad de Netflix... se desbarata la cama y no tiene donde dormir'))
+                :
+                resolve(true)
+        }, 2000)
+    })
+}
+
 despertarTemprano("06:00AM")
     .then((resolve)=>tomarTransmilenio("07:00AM")
     .then((resolve)=>estudiarBictia("08:15AM")
@@ -96,5 +109,6 @@ despertarTemprano("06:00AM")
     .then((resolve)=>trabajarBellatrix("01:00PM"))
     .then((resolve)=>salirTrabajo("08:00PM"))
     .then((resolve)=>volverCasar("11:00PM"))
-    .then((resolved)=>console.log(`Se acuesta para ver Netflix`)))))
+    .then((resolve)=>verNetflix("01:00AM"))
+    .then((resolved)=>console.log('[01:00AM]\nSe acuesta para ver Netflix')))))
     .catch((err)=>{console.log(err.message)})
