@@ -1,65 +1,58 @@
-var despertarTemprano = function() {
-    return new Promise(function(resolve, reject) {
-        resolve('Pepe se despertó a las 6:00am \n');
-    });
-};
-  
-var tomarTransmilenio = function(mensaje) {
-    return new Promise(function(resolve, reject) {
-      resolve(mensaje + 'Se alistó y tomó Transmilenio a las 7:00am \n');
-    });
-};
-  
-var estudiarBictia = function(mensaje) {
-    return new Promise(function(resolve, reject) {
-        resolve(mensaje + 'Entró a estudiar a las 8:15am \n');
-    });
-};
+// Reformulando las funciones como las explicó Adrián
+// ACTIVIDAD 1:
+function despertarTemprano(hora){
+    return promesa = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            return(!(hora == "06:00AM")) ?
+                reject(new Error('No suena el despertador'))
+                :
+                resolve(true)
+        }, 0)
+    })
+}
 
-var salirAlmuerzo = function(mensaje) {
-    return new Promise(function(resolve, reject) {
-        resolve(mensaje + 'Salió del estudio y almorzó a las 12:00 \n');
-    });
-};
+// ACTIVIDAD 2:
+function tomarTransmilenio(hora){
+    console.log('[06:00AM]\nSe despierta\n\n')
+    return promesa = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            return(!(hora == "07:00AM")) ?
+            reject(new Error('Pepe, sufrió el paro en el portal y no pude coger transporte'))
+            :
+            resolve(true)
+        }, 2000)
+    })
+}
 
-var trabajarBellatrix = function(mensaje) {
-    return new Promise(function(resolve, reject) {
-        resolve(mensaje + 'Fue a trabajar a Bellatrix a la 1:00pm \n');
-    });
-};
+// ACTIVIDAD 3:
+function estudiarBictia(hora){
+    console.log('[07:00AM]\nSe alista y sale a coger transmilenio\n\n')
+    return promesa = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            return(!(hora == "08:15AM")) ?
+            reject(new Error('Pepe, llegó tarde y no puede entrar a clases'))
+            :
+            resolve(true)
+        }, 2000)
+    })
+}
 
-var relaxCompas = function(mensaje) {
-    return new Promise(function(resolve, reject) {
-        resolve(mensaje + 'Salió del trabajo a relajarse con sus compañeros de trabajo a las 8:00pm \n');
-    });
-};
+// ACTIVIDAD 4:
+function salirAlmuerzo(hora){
+    console.log('[08:15AM]\nEntra a estudiar a Bictia\n\n')
+    return promesa = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            return(!(hora == "12:00M")) ?
+            reject(new Error('Pepe, no pud almorzar porque le sale un pelo en la sopa'))
+            :
+            resolve(true)
+        }, 2000)
+    })
+}
 
-var vuelveCasa = function(mensaje) {
-    return new Promise(function(resolve, reject) {
-        resolve(mensaje + 'Volvió a casa a las 11:00pm \n');
-    });
-};
-
-var verNetflix = function(mensaje) {
-    return new Promise(function(resolve, reject) {
-        resolve(mensaje + 'Se acuesta para ver Netflix a la 1:00am \n');
-    });
-};
-  
-despertarTemprano().then(function(result){
-    return tomarTransmilenio(result);
-}).then(function(result){
-    return estudiarBictia(result);
-}).then(function(result){
-    return salirAlmuerzo(result);
-}).then(function(result){
-    return trabajarBellatrix(result);
-}).then(function(result){
-    return relaxCompas(result);
-}).then(function(result){
-    return vuelveCasa(result);
-}).then(function(result){
-    return verNetflix(result);
-}).then(function(result){
-    console.log('Así fue el día de Pepe:\n \n' + result);
-});
+despertarTemprano("06:00AM")
+    .then((resolved)=>tomarTransmilenio("07:00AM")
+    .then((resolved)=>estudiarBictia("08:15AM")
+    .then((resolved)=>salirAlmuerzo("12:00M")
+    .then((resolved)=>console.log(`Se acuesta para ver Netflix`)))))
+    .catch((err)=>{console.log(err.message)})
