@@ -43,16 +43,30 @@ function salirAlmuerzo(hora){
     return promesa = new Promise((resolve, reject) => {
         setTimeout(() => {
             return(!(hora == "12:00M")) ?
-            reject(new Error('Pepe, no pud almorzar porque le sale un pelo en la sopa'))
-            :
-            resolve(true)
+                reject(new Error('Pepe, no pudo almorzar porque le sale un pelo en la sopa'))
+                :
+                resolve(true)
+        }, 2000)
+    })
+}
+
+// ACTIVIDAD 5:
+function trabajarBellatrix(hora){
+    console.log('[12:00M]\nSale del estudio y almuerza')
+    return promesa = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            return(!(hora == "01:00PM")) ?
+                reject(new Error('Pepe, se le olvidó el carnet y no lo dejan ingresar'))
+                :
+                resolve(true)
         }, 2000)
     })
 }
 
 despertarTemprano("06:00AM")
-    .then((resolved)=>tomarTransmilenio("07:00AM")
-    .then((resolved)=>estudiarBictia("08:15AM")
-    .then((resolved)=>salirAlmuerzo("12:00M")
+    .then((resolve)=>tomarTransmilenio("07:00AM")
+    .then((resolve)=>estudiarBictia("08:15AM")
+    .then((resolve)=>salirAlmuerzo("12:00M")
+    .then((resolve)=>trabajarBellatrix("01:00PM"))
     .then((resolved)=>console.log(`Se acuesta para ver Netflix`)))))
     .catch((err)=>{console.log(err.message)})
