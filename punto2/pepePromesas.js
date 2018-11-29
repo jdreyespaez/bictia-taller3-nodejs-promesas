@@ -69,9 +69,22 @@ function salirTrabajo(hora){
     return promesa = new Promise((resolve, reject) => {
         setTimeout(() => {
             return(!(hora == "08:00PM")) ?
-            reject(new Error('Pepe es robado'))
-            :
-            resolve(true)
+                reject(new Error('Pepe es robado'))
+                :
+                resolve(true)
+        }, 2000)
+    })
+}
+
+// ACTIVIDAD 7:
+function volverCasar(hora){
+    console.log('[08:00PM]\nSale del trabajo a relajarse con sus compañeros de trabajo\n\n')
+    return promesa = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            return(!(hora == '11:00PM')) ?
+                reject(new Error('Pepe ha perdido las llaves de su casa y le toca dormir en el parque'))
+                :
+                resolve(true)
         }, 2000)
     })
 }
@@ -82,5 +95,6 @@ despertarTemprano("06:00AM")
     .then((resolve)=>salirAlmuerzo("12:00M")
     .then((resolve)=>trabajarBellatrix("01:00PM"))
     .then((resolve)=>salirTrabajo("08:00PM"))
+    .then((resolve)=>volverCasar("11:00PM"))
     .then((resolved)=>console.log(`Se acuesta para ver Netflix`)))))
     .catch((err)=>{console.log(err.message)})
